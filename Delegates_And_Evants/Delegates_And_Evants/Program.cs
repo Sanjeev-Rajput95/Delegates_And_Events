@@ -2,30 +2,35 @@
 
 namespace Delegates_And_Evants
 {
-    public delegate int Operation(int x, int y);
+    public delegate void DelEventHandler();
     public class Program
     {
-        static int Addition(int a, int b)
-        {
-            return a + b;
-        }
+        public static event DelEventHandler add;
 
-        static int Subtraction(int a, int b)
-        {
-            return a - b;
-        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Delegates\n");
-            Operation obj1 = new Operation(Addition);
-            Operation obj2 = new Operation(Subtraction);
+            Console.WriteLine("Welcome to Events\n");
 
-            Console.WriteLine($"\nAddition of two numbers is: {obj1(20, 30)}");
-            Console.WriteLine($"\nSubtraction of two numbers is: {obj2(20, 30)}");
+            add += new DelEventHandler(India);
+            add += new DelEventHandler(Japan);
+            add += new DelEventHandler(England);
 
-            MulticastDelegates.ImplementDelegate();
+            add.Invoke();
 
-            Console.ReadLine();
+            Console.WriteLine("\nEvent Handling: ");
+            EventHandling.ImplementEvent();
+        }
+        public static void India()
+        {
+            Console.WriteLine("India");
+        }
+        public static void Japan()
+        {
+            Console.WriteLine("Japan");
+        }
+        public static void England()
+        {
+            Console.WriteLine("England");
         }
     }
 }
