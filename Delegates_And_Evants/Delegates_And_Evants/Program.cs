@@ -9,7 +9,7 @@ namespace Delegates_And_Evants
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Events\n");
+            Console.WriteLine("Welcome to Events \n");
 
             add += new DelEventHandler(India);
             add += new DelEventHandler(Japan);
